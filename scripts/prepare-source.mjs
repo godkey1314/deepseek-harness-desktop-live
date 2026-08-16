@@ -19,13 +19,17 @@ fs.cpSync(overlayDesktop, targetDesktop, { recursive: true, force: true })
 const workspacePath = path.join(sourceDir, 'pnpm-workspace.yaml')
 if (fs.existsSync(workspacePath)) {
   let workspace = fs.readFileSync(workspacePath, 'utf8')
-  if (!/electron:\s*true/.test(workspace)) {
-    workspace = workspace.replace(/(allowBuilds:\n)/, '$1  electron: true\n')
-    if (!workspace.includes('electron: true')) {
-      workspace += '\nallowBuilds:\n  electron: true\n'
+  const extraBuilds = ['electron', 'electron-winstaller']
+  const missing = extraBuilds.filter((name) => !new RegExp(`${name}:\\s*true`).test(workspace))
+  if (missing.length > 0) {
+    const lines = missing.map((name) => `  ${name}: true`)
+    if (workspace.includes('allowBuilds:')) {
+      workspace = workspace.replace(/(allowBuilds:\n)/, `$1${lines.join('\n')}\n`)
+    } else {
+      workspace += `\nallowBuilds:\n${lines.join('\n')}\n`
     }
     fs.writeFileSync(workspacePath, workspace)
-    console.log('Patched pnpm-workspace.yaml: allow electron build scripts')
+    console.log(`Patched pnpm-workspace.yaml: allow ${missing.join(', ')} build scripts`)
   }
 } else {
   console.warn('pnpm-workspace.yaml not found, skipping allowBuilds patch')
