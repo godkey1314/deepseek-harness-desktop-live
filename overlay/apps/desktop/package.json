@@ -15,7 +15,15 @@
     "dist:linux": "pnpm run build && electron-builder --linux AppImage deb"
   },
   "license": "MIT",
-  "author": "godkey1314",
+  "homepage": "https://github.com/godkey1314/deepseek-harness-desktop-live",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/godkey1314/deepseek-harness-desktop-live.git"
+  },
+  "author": {
+    "name": "godkey1314",
+    "email": "godkey1314@users.noreply.github.com"
+  },
   "dependencies": {
     "electron-updater": "^6.8.9",
     "semver": "^7.8.5"

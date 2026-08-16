@@ -29,6 +29,7 @@ mac:
 linux:
   icon: build/icon.png
   category: Development
+  maintainer: godkey1314 <godkey1314@users.noreply.github.com>
   target:
     - AppImage
     - deb
