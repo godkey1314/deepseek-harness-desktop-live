@@ -1,0 +1,35 @@
+appId: ai.deepseek.harness.desktop
+productName: DeepSeek Harness
+directories:
+  output: release
+files:
+  - dist/**
+  - package.json
+asar: true
+electronDist: node_modules/electron/dist
+publish:
+  provider: github
+  owner: godkey1314
+  repo: deepseek-harness-desktop-live
+win:
+  icon: build/icon.png
+  target:
+    - nsis
+    - portable
+nsis:
+  oneClick: false
+  allowToChangeInstallationDirectory: true
+  createDesktopShortcut: true
+  createStartMenuShortcut: true
+mac:
+  icon: build/icon.png
+  category: public.app-category.developer-tools
+  target:
+    - dmg
+    - zip
+linux:
+  icon: build/icon.png
+  category: Development
+  target:
+    - AppImage
+    - deb

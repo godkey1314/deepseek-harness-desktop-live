@@ -1,0 +1,13 @@
+{
+  "enabled": true,
+  "remote": "origin",
+  "branch": "",
+  "sourceDir": "",
+  "ai": {
+    "apiKeyEnv": "DEEPSEEK_API_KEY",
+    "model": "deepseek-chat",
+    "baseUrl": "https://api.deepseek.com"
+  },
+  "autoStash": true,
+  "backupRelease": true
+}

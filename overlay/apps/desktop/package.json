@@ -1,0 +1,30 @@
+{
+  "name": "dsh-desktop-live",
+  "version": "0.1.0-rc.5",
+  "private": true,
+  "description": "Unofficial DeepSeek Harness desktop shell with automatic updates. Not affiliated with DeepSeek.",
+  "type": "module",
+  "main": "dist/main.js",
+  "scripts": {
+    "build": "tsc -p tsconfig.json",
+    "start": "pnpm run build && electron .",
+    "pack": "pnpm run build && electron-builder --win",
+    "dist": "pnpm run build && electron-builder --win nsis portable",
+    "dist:win": "pnpm run build && electron-builder --win nsis portable",
+    "dist:mac": "pnpm run build && electron-builder --mac dmg zip",
+    "dist:linux": "pnpm run build && electron-builder --linux AppImage deb"
+  },
+  "license": "MIT",
+  "author": "godkey1314",
+  "dependencies": {
+    "electron-updater": "^6.8.9",
+    "semver": "^7.8.5"
+  },
+  "devDependencies": {
+    "@types/node": "^22.0.0",
+    "@types/semver": "^7.8.0",
+    "electron": "^43.4.0",
+    "electron-builder": "^26.15.3",
+    "typescript": "^6.0.3"
+  }
+}
