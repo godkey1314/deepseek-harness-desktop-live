@@ -10,6 +10,7 @@ publish:
   provider: github
   owner: godkey1314
   repo: deepseek-harness-desktop-live
+  releaseType: release
 win:
   icon: build/icon.png
   target:
