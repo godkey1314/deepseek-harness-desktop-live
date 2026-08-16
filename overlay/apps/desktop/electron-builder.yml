@@ -6,7 +6,6 @@ files:
   - dist/**
   - package.json
 asar: true
-electronDist: node_modules/electron/dist
 publish:
   provider: github
   owner: godkey1314
